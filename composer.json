@@ -1,0 +1,43 @@
+{
+  "name": "marktic/embeddable",
+  "type": "library",
+  "license": "MIT",
+  "description": "Embeddable widgets library for SaaS applications",
+  "keywords": ["embeddable", "widgets", "iframe", "saas", "embed"],
+  "homepage": "https://github.com/marktic/embeddable",
+  "authors": [
+    {
+      "name": "Gabriel Solomon",
+      "email": "hello@gabrielsolomon.ro"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Marktic\\Embeddable\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Marktic\\Embeddable\\Tests\\": "tests/src",
+      "Marktic\\Embeddable\\Tests\\Fixtures\\": "tests/fixtures"
+    }
+  },
+  "require": {
+    "php": ">=8.2",
+    "ext-json": "*",
+    "bytic/package-base": "^1.0"
+  },
+  "require-dev": {
+    "bytic/phpqatools": "^1.0"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "config": {
+    "allow-plugins": {
+      "phpstan/extension-installer": true,
+      "ergebnis/composer-normalize": true,
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "bytic/phpqatools": true
+    }
+  }
+}
