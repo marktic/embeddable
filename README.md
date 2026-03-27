@@ -21,8 +21,8 @@ composer require marktic/embeddable
 
 ```php
 use Marktic\Embeddable\Widgets\AbstractWidget;
-use Marktic\Embeddable\Widgets\Properties\TextProperty;
-use Marktic\Embeddable\Widgets\Properties\SelectProperty;
+use Marktic\Embeddable\WidgetProperties\TextProperty;
+use Marktic\Embeddable\WidgetProperties\SelectProperty;
 
 class MyWidget extends AbstractWidget
 {
@@ -47,9 +47,9 @@ class MyWidget extends AbstractWidget
 ### Define a Widget Collection
 
 ```php
-use Marktic\Embeddable\Widgets\AbstractWidgets;
+use Marktic\Embeddable\Widgets\WidgetsCollection;
 
-class MyWidgets extends AbstractWidgets
+class MyWidgets extends WidgetsCollection
 {
     protected static function widgetClasses(): array
     {
@@ -72,7 +72,7 @@ echo $widget->getHtml(['theme' => 'dark', 'title' => 'Hello']);
 ### Admin Bundle Controller
 
 ```php
-use Marktic\Embeddable\Bundle\Controllers\Admin\WidgetsControllerTrait;
+use Marktic\Embeddable\Bundle\Modules\Admin\Controllers\WidgetsControllerTrait;
 
 class MyWidgetsController
 {

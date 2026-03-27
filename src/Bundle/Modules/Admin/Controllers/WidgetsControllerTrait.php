@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Marktic\Embeddable\Bundle\Controllers\Admin;
+namespace Marktic\Embeddable\Bundle\Modules\Admin\Controllers;
 
-use Marktic\Embeddable\Widgets\AbstractWidgets;
+use Marktic\Embeddable\Widgets\WidgetsCollection;
 use Nip\Controllers\Response\ResponsePayload;
 
 /**
@@ -15,14 +15,14 @@ trait WidgetsControllerTrait
     use AbstractControllerTrait;
 
     /**
-     * Returns the widgets class to use for this controller.
-     * Override in your controller to return a concrete AbstractWidgets subclass.
+     * Returns the widgets collection class to use for this controller.
+     * Override in your controller to return a concrete WidgetsCollection subclass.
      */
     abstract protected function getWidgetsClass(): string;
 
     public function index(): void
     {
-        /** @var class-string<AbstractWidgets> $widgetsClass */
+        /** @var class-string<WidgetsCollection> $widgetsClass */
         $widgetsClass = $this->getWidgetsClass();
         $widgets = $widgetsClass::all();
 

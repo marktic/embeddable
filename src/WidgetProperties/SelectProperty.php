@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Marktic\Embeddable\Widgets\Properties;
+namespace Marktic\Embeddable\WidgetProperties;
 
 class SelectProperty extends AbstractProperty
 {

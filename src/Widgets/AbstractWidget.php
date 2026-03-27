@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Marktic\Embeddable\Widgets;
 
-use Marktic\Embeddable\Widgets\Properties\AbstractProperty;
+use Marktic\Embeddable\WidgetProperties\AbstractProperty;
 
 abstract class AbstractWidget
 {

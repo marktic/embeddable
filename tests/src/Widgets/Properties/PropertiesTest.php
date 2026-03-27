@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Marktic\Embeddable\Tests\Widgets\Properties;
 
 use Marktic\Embeddable\Tests\AbstractTest;
-use Marktic\Embeddable\Widgets\Properties\CheckboxProperty;
-use Marktic\Embeddable\Widgets\Properties\NumberProperty;
-use Marktic\Embeddable\Widgets\Properties\SelectProperty;
-use Marktic\Embeddable\Widgets\Properties\TextProperty;
+use Marktic\Embeddable\WidgetProperties\CheckboxProperty;
+use Marktic\Embeddable\WidgetProperties\NumberProperty;
+use Marktic\Embeddable\WidgetProperties\SelectProperty;
+use Marktic\Embeddable\WidgetProperties\TextProperty;
 
 class PropertiesTest extends AbstractTest
 {

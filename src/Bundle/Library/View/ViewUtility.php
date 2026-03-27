@@ -8,17 +8,12 @@ class ViewUtility
 {
     public static function registerViewPaths($view, string $module = null): void
     {
-        $modules = [
-            $module,
-            'base',
-        ];
-        foreach ($modules as $mod) {
-            $path = realpath(__DIR__ . '/../../Resources/views/' . $mod);
-            if ($path === false) {
-                continue;
-            }
-            $view->addPath($path);
-            $view->addPath($path, 'MarkticEmbeddable');
+        $moduleDir = ucfirst(strtolower($module ?? 'base'));
+        $path = realpath(__DIR__ . '/../../Modules/' . $moduleDir . '/views');
+        if ($path === false) {
+            return;
         }
+        $view->addPath($path);
+        $view->addPath($path, 'MarkticEmbeddable');
     }
 }

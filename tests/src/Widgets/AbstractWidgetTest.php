@@ -7,6 +7,7 @@ namespace Marktic\Embeddable\Tests\Widgets;
 use Marktic\Embeddable\Tests\AbstractTest;
 use Marktic\Embeddable\Tests\Fixtures\Widgets\SampleWidget;
 use Marktic\Embeddable\Tests\Fixtures\Widgets\SampleWidgets;
+use Marktic\Embeddable\Widgets\WidgetsCollection;
 
 class AbstractWidgetTest extends AbstractTest
 {
@@ -80,11 +81,12 @@ class AbstractWidgetTest extends AbstractTest
         self::assertCount(3, $properties);
     }
 
-    public function testAbstractWidgetsAll(): void
+    public function testWidgetsCollectionAll(): void
     {
         $widgets = SampleWidgets::all();
-        self::assertIsArray($widgets);
-        self::assertArrayHasKey('sample-widget', $widgets);
-        self::assertInstanceOf(SampleWidget::class, $widgets['sample-widget']);
+        self::assertInstanceOf(WidgetsCollection::class, $widgets);
+        $widgetsArray = $widgets->toArray();
+        self::assertArrayHasKey('sample-widget', $widgetsArray);
+        self::assertInstanceOf(SampleWidget::class, $widgetsArray['sample-widget']);
     }
 }

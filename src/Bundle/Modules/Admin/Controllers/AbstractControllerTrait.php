@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Marktic\Embeddable\Bundle\Controllers\Admin;
+namespace Marktic\Embeddable\Bundle\Modules\Admin\Controllers;
 
 use Marktic\Embeddable\Bundle\Library\View\ViewUtility;
 use Nip\Controllers\Response\ResponsePayload;

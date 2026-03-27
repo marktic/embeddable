@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Marktic\Embeddable\Tests\Fixtures\Widgets;
 
 use Marktic\Embeddable\Widgets\AbstractWidget;
-use Marktic\Embeddable\Widgets\Properties\CheckboxProperty;
-use Marktic\Embeddable\Widgets\Properties\SelectProperty;
-use Marktic\Embeddable\Widgets\Properties\TextProperty;
+use Marktic\Embeddable\WidgetProperties\CheckboxProperty;
+use Marktic\Embeddable\WidgetProperties\SelectProperty;
+use Marktic\Embeddable\WidgetProperties\TextProperty;
 
 class SampleWidget extends AbstractWidget
 {

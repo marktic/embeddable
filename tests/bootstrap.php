@@ -4,6 +4,15 @@ define('PROJECT_BASE_PATH', __DIR__ . '/..');
 define('TEST_BASE_PATH', __DIR__);
 define('TEST_FIXTURE_PATH', __DIR__ . DIRECTORY_SEPARATOR . 'fixtures');
 
+// Load bytic/collections stubs when vendor is not available
+if (!file_exists(PROJECT_BASE_PATH . '/vendor/autoload.php')) {
+    $stubsBase = TEST_FIXTURE_PATH . '/Stubs/';
+    require $stubsBase . 'Nip/Collections/AbstractCollection.php';
+    require $stubsBase . 'Nip/Collections/Typed/ClassCollection.php';
+} else {
+    require PROJECT_BASE_PATH . '/vendor/autoload.php';
+}
+
 // Register PSR-4 autoloader for src/ and tests/
 spl_autoload_register(function (string $class): void {
     $prefixes = [
