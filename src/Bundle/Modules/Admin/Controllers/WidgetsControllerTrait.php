@@ -1,0 +1,32 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Marktic\Embeddable\Bundle\Modules\Admin\Controllers;
+
+use Marktic\Embeddable\Widgets\WidgetsCollection;
+use Nip\Controllers\Response\ResponsePayload;
+
+/**
+ * @method ResponsePayload payload()
+ */
+trait WidgetsControllerTrait
+{
+    use AbstractControllerTrait;
+
+    /**
+     * Returns the widgets collection class to use for this controller.
+     * Override in your controller to return a concrete WidgetsCollection subclass.
+     */
+    abstract protected function getWidgetsClass(): string;
+
+    public function index(): void
+    {
+        /** @var class-string<WidgetsCollection> $widgetsClass */
+        $widgetsClass = $this->getWidgetsClass();
+        $widgets = $widgetsClass::all();
+
+        $this->payload()->set('widgets', $widgets);
+        $this->payload()->setView('index');
+    }
+}

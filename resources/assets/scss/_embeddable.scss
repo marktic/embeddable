@@ -1,0 +1,21 @@
+// Embeddable widget styles
+
+.embeddable-widget {
+    width: 100%;
+    overflow-x: hidden;
+    border: 0;
+}
+
+.widget-builder {
+    .customize-widget {
+        margin-bottom: 1.5rem;
+    }
+
+    .embed-code {
+        pre {
+            height: 200px;
+            white-space: pre-wrap;
+            margin-bottom: 0;
+        }
+    }
+}
