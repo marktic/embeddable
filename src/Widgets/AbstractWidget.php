@@ -13,7 +13,13 @@ abstract class AbstractWidget
 
     public const SANDBOX_ALL = 'allow-top-navigation allow-scripts allow-popups allow-forms allow-same-origin allow-modals';
 
-    abstract public function getName(): string;
+    public function getName(): string
+    {
+        if (constant('static::NAME')) {
+            return constant('static::NAME');
+        }
+        return static::class;
+    }
 
     abstract public function getLabel(): string;
 

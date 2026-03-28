@@ -20,11 +20,15 @@ trait HasWidgetsControllerTrait
      */
     abstract protected function getWidgetsClass(): string;
 
-    public function populateWidgets(): void
+    public function populateWidgets($subject = null): void
     {
         /** @var class-string<WidgetsCollection> $widgetsClass */
         $widgetsClass = $this->getWidgetsClass();
-        $widgets = $widgetsClass::all();
+        if ($subject) {
+            $widgets = $widgetsClass::for($subject);
+        } else {
+            $widgets = $widgetsClass::all();
+        }
 
         $this->payload()->with(['widgets' => $widgets]);
     }

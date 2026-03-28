@@ -13,8 +13,10 @@ use Nip\View\View;
  */
 trait AbstractControllerTrait
 {
-    protected function registerViewPathsEmbeddable(View $view): void
+    public function registerViewPaths(View $view): void
     {
+        parent::registerViewPaths($view);
+
         ViewUtility::registerViewPaths($view, 'admin');
     }
 }

@@ -9,17 +9,6 @@ trait HasSubject
 {
     protected $subject;
 
-    public static function for($subject): self
-    {
-        $items = [];
-        foreach (static::widgetClasses() as $name => $class) {
-            $items[$name] = new $class();
-            $items[$name]->setSubject($subject);
-        }
-
-        return new static($items);
-    }
-
     public function setSubject($subject): self
     {
         $this->subject = $subject;

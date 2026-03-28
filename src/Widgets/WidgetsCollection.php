@@ -10,19 +10,12 @@ abstract class WidgetsCollection extends ClassCollection
 {
     protected $validClass = AbstractWidget::class;
 
-    public function __construct($items = [])
-    {
-        parent::__construct($items);
-    }
-
-    /**
-     * @return static
-     */
-    public static function all(): static
+    public static function for($subject): self
     {
         $items = [];
         foreach (static::widgetClasses() as $name => $class) {
             $items[$name] = new $class();
+            $items[$name]->setSubject($subject);
         }
 
         return new static($items);

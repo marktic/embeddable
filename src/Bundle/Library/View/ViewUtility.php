@@ -6,6 +6,7 @@ namespace Marktic\Embeddable\Bundle\Library\View;
 
 class ViewUtility
 {
+    public const NAMESPACE = 'MarkticEmbeddable';
     public static function registerViewPaths($view, string $module = null): void
     {
         $moduleDir = ucfirst(strtolower($module ?? 'base'));
@@ -14,6 +15,6 @@ class ViewUtility
             return;
         }
         $view->addPath($path);
-        $view->addPath($path, 'MarkticEmbeddable');
+        $view->addPath($path, self::NAMESPACE );
     }
 }
