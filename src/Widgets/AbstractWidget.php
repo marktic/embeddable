@@ -4,11 +4,14 @@ declare(strict_types=1);
 
 namespace Marktic\Embeddable\Widgets;
 
+use ByTIC\Html\Tags\Iframe;
 use Marktic\Embeddable\WidgetProperties\AbstractProperty;
 
 abstract class AbstractWidget
 {
     use Behaviours\HasSubject;
+
+    public const SANDBOX_ALL = 'allow-top-navigation allow-scripts allow-popups allow-forms allow-same-origin allow-modals';
 
     abstract public function getName(): string;
 
@@ -35,20 +38,17 @@ abstract class AbstractWidget
 
     public function getHtml(array $params = []): string
     {
-        $url = $this->getUrl($params);
-        $styles = implode(';', $this->getStyles());
-        $sandbox = 'allow-top-navigation allow-scripts allow-popups allow-forms allow-same-origin allow-modals';
-        $onload = "(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+'px';}(this));";
+        $classes = implode(' ', $this->getClasses());
 
-        return $this->getScript()
-            . '<iframe'
-            . ' src="' . htmlspecialchars($url, ENT_QUOTES) . '"'
-            . ' style="' . htmlspecialchars($styles, ENT_QUOTES) . '"'
-            . ' sandbox="' . $sandbox . '"'
-            . ' onload="' . htmlspecialchars($onload, ENT_QUOTES) . '"'
-            . ' class="embeddable-widget"'
-            . ' id="embeddable-' . htmlspecialchars($this->getName(), ENT_QUOTES) . '"'
-            . '></iframe>';
+        $return = $this->getScript();
+        $return .= Iframe
+            ::src($this->getUrl($params))
+            ->setAttribute('style', implode(';', $this->getStyles()))
+            ->setAttribute('sandbox', $this->getSandbox())
+            ->setAttribute('onload', $this->getOnload())
+            ->addClass($classes)
+            ->setAttribute('id', $this->getIframeId());
+        return $return;
     }
 
     protected function getScript(): string
@@ -63,6 +63,26 @@ abstract class AbstractWidget
             'overflow-x: hidden',
             'border: 0',
         ];
+    }
+
+    protected function getClasses(): array
+    {
+        return [];
+    }
+
+    protected function getIframeId(): string
+    {
+        return 'embeddable-' . $this->getName();
+    }
+
+    protected function getSandbox(): string
+    {
+        return self::SANDBOX_ALL;
+    }
+
+    protected function getOnload(): string
+    {
+        return "(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+'px';}(this));";
     }
 
     abstract protected function getBaseUrl(): string;
