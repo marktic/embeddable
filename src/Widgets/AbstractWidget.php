@@ -8,6 +8,8 @@ use Marktic\Embeddable\WidgetProperties\AbstractProperty;
 
 abstract class AbstractWidget
 {
+    use Behaviours\HasSubject;
+
     abstract public function getName(): string;
 
     abstract public function getLabel(): string;
