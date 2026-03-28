@@ -63,4 +63,3 @@ $firstWidget = array_key_first($widgetsArray);
     <?php } ?>
 </div>
 
-<script type="text/javascript" src="<?= asset('vendor/embeddable/js/widget-builder.js'); ?>"></script>

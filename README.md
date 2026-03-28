@@ -72,11 +72,11 @@ echo $widget->getHtml(['theme' => 'dark', 'title' => 'Hello']);
 ### Admin Bundle Controller
 
 ```php
-use Marktic\Embeddable\Bundle\Modules\Admin\Controllers\WidgetsControllerTrait;
+use Marktic\Embeddable\Bundle\Modules\Admin\Controllers\HasWidgetsControllerTrait;
 
 class MyWidgetsController
 {
-    use WidgetsControllerTrait;
+    use HasWidgetsControllerTrait;
 
     protected function getWidgetsClass(): string
     {

@@ -10,7 +10,7 @@ use Nip\Controllers\Response\ResponsePayload;
 /**
  * @method ResponsePayload payload()
  */
-trait WidgetsControllerTrait
+trait HasWidgetsControllerTrait
 {
     use AbstractControllerTrait;
 
@@ -20,13 +20,12 @@ trait WidgetsControllerTrait
      */
     abstract protected function getWidgetsClass(): string;
 
-    public function index(): void
+    public function populateWidgets(): void
     {
         /** @var class-string<WidgetsCollection> $widgetsClass */
         $widgetsClass = $this->getWidgetsClass();
         $widgets = $widgetsClass::all();
 
-        $this->payload()->set('widgets', $widgets);
-        $this->payload()->setView('index');
+        $this->payload()->with(['widgets' => $widgets]);
     }
 }
